@@ -1,3 +1,11 @@
-<p>
-  header works!
-</p>
+<mat-toolbar color="primary">
+
+  <span><img src="/assets/images/logo.png" height=30 width=41></span>
+  <a mat-button routerLink="/tasks" routerLinkActive="active"><i class="fa fa-check-square-o" aria-hidden="true"></i>
+ Tasks</a>
+  <span class="flex-spacer"></span>
+  <a *ngIf="!username" mat-button (click)="openLoginForm()"><span class="fa fa-sign-in fa-lg"></span> Login</a>
+  <a *ngIf="username">{{username}}</a>
+  <a *ngIf="username" mat-button (click)="logOut()"><span class="fa fa-sign-out fa-lg"></span> Logout</a>
+</mat-toolbar>
+

@@ -1,0 +1,31 @@
+<mat-toolbar color="primary">
+    Add Task
+  <span class="flex-spacer"></span>
+  <button mat-button mat-dialog-close>&times;</button>
+</mat-toolbar>
+
+<div *ngIf="errMess">
+  <h2>Error</h2>
+  <h4>{{errMess}}</h4>
+</div>
+
+<form novalidate #addForm="ngForm" (ngSubmit)="onSubmit()">
+
+  <mat-dialog-content>
+    <p>
+      <mat-form-field>
+        <input matInput placeholder="Title" type="text" [(ngModel)]="task.title" name="title"  #title="ngModel" required>
+        <mat-error *ngIf="title.errors?.required">title is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Subtitle" type="text" [(ngModel)]="task.subtitle" name="subtitle" #subtitle="ngModel" required>
+        <mat-error *ngIf="subtitle.errors?.required">subtitle is required</mat-error>
+      </mat-form-field>
+    </p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <span class="flex-spacer"></span>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="addForm.form.invalid">Add</button>
+  </mat-dialog-actions>
+</form>

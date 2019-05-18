@@ -1,3 +1,29 @@
-<p>
-  tasks works!
-</p>
+<div *ngIf="username">
+
+    <button mat-fab color="primary" (click)="openAddTask()"><i class="fa fa-plus-square-o" aria-hidden="true"></i>
+
+</button>
+ 
+  <div *ngIf="tasks">
+    <div *ngFor="let task of tasks" >
+      
+      <mat-card appHighlight>
+          
+        <mat-card-title>{{task.title}}</mat-card-title>
+        <mat-card-subtitle>{{task.subtitle}} </mat-card-subtitle>
+        <mat-card-actions>
+          <button mat-mini-fab color="primary"(click)="delete(task._id)">Done</button>
+        </mat-card-actions>
+      </mat-card>  
+      
+    </div>
+  </div>
+
+  <div [hidden]="tasks">
+      <p>No tasks yet !</p>
+  </div>
+</div>
+
+<div [hidden]="username">
+  <p>please login to show ToDo List !</p>
+</div>
